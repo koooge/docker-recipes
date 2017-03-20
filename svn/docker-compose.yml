@@ -1,0 +1,17 @@
+version: '2'
+
+# cf. https://github.com/MarvAmBass/docker-subversion
+
+services:
+  svn:
+    image: marvambass/subversion
+    container_name: some-svn
+    restart: always
+    volumes:
+      - ./data/svn:/var/local/svn
+      - ./data/svn-backup:/var/svn-backup
+    ports:
+      - "18080:80"
+
+volumes:
+  data:

@@ -1,0 +1,7 @@
+/gitbucket.war
+/data/*
+!/data/plugins/
+/data/plugins/*
+!/data/plugins/.gitkeep
+/logs/*
+!/logs/.gitkeep

@@ -1,0 +1,6 @@
+CREATE TABLE db.table (
+  id INT(11) unsigned NOT NULL,
+  name VARCHAR(32) NOT NULL,
+  PRIMARY KEY (id)
+) ENGINE = InnoDB DEFAULT CHARCTER SET utf8mb4;
+

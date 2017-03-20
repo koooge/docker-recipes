@@ -1,0 +1,29 @@
+version: "3"
+
+services:
+  mysql:
+    image: mysql:5.7
+    container_name: some-mysql
+    restart: always
+    ports:
+      - "3306:3306"
+    volumes:
+      - ./db/datadir:/var/lib/mysql 
+      - ./db/conf.d:/etc/mysql/conf.d
+      - ./db/migrate/initdb:/docker-entry-point-initdb.d
+    env_file:
+      - .env
+
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin:4.6
+    container_name: some-phpmyadmin
+    restart: always
+    ports:
+      - "12000:80"
+    depends_on:
+      - mysql
+    env_file:
+      - .env
+   
+volumes:
+  data:
