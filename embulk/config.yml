@@ -1,0 +1,11 @@
+in:
+  type: file
+  path_prefix: /test.csv
+  parser:
+    charset: UTF-8
+    type: csv
+    columns:
+    - {name: id, type: long}
+    - {name: comment, type: string}
+out:
+  type: stdout
