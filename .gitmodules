@@ -1,0 +1,3 @@
+[submodule "ruby-devops"]
+	path = ruby-devops
+	url = https://github.com/koooge/ruby-devops
