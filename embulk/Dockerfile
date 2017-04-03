@@ -1,8 +1,7 @@
 FROM openjdk:8
 
 RUN curl --create-dirs -o /usr/local/bin/embulk -L "https://dl.embulk.org/embulk-latest.jar" && \
-    chmod +x /usr/local/bin/embulk # && \
-#    embulk gem install embulk-input-http embulk-output-mysql
+    chmod +x /usr/local/bin/embulk
 
 COPY ./docker-entrypoint.sh /
 COPY ./config.yml /
