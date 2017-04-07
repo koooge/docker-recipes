@@ -3,7 +3,8 @@ in:
   path_prefix: /test.csv
   parser:
     charset: UTF-8
-#    escape: '"'
+    escape: '"'
+    skip_header_lines: 1
     type: csv
     columns:
     - {name: id, type: long}

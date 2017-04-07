@@ -11,6 +11,7 @@ RUN curl --create-dirs -o /usr/local/bin/embulk -L "https://dl.embulk.org/embulk
 
 COPY ./docker-entrypoint.sh /
 COPY ./config.yml /
+COPY ./test.csv /
 
 RUN apt-get update && apt-get install -y --no-install-recommends cron locales && \
     apt-get clean && \
@@ -20,6 +21,6 @@ RUN echo "en_US.UTF-8 UTF-8" > /etc/locale.gen && \
     locale-gen && \
     update-locale LANG="en_US.UTF-8"
   
-RUN echo '*/5 * * * * root /docker-entrypoint.sh' >> /etc/crontab
+RUN echo '*/1 * * * * root /docker-entrypoint.sh' >> /etc/crontab
 
 CMD ["cron", "-f"]
