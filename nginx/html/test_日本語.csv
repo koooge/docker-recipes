@@ -4,4 +4,4 @@ id, name, attribute1, attribute2
 1006, ふが1, fgr@7-, -46uaf
 1005, "foo,bar\.piyo",,
 ## coment line
-444444444, 12345, １２三４５, 12345
+444444444, ""12345"", "１２"",三４""５", 12345

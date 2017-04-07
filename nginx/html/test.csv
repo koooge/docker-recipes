@@ -4,4 +4,4 @@ id, name, attribute1, attribute2
 1006, fuga1, fgr@7-, -46uaf
 1005, "foo,bar\.piyo",,
 ## coment line
-444444444, 12345, 12345, 12345
+444444444, ""12345"", """123,45""", 12345
