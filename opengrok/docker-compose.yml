@@ -1,0 +1,18 @@
+# Usage:
+#   - up: `docker-compose up -d`
+#   - down & remove: `docker-compose down -v --rmi all`
+
+version: '3'
+
+services:
+  17ka-opengrok:
+    build: ./
+    container_name: some-opengrok
+    restart: always
+    ports:
+      - "58080:8080"
+    volumes:
+      - ./data/src:/src
+
+volumes:
+  data:
