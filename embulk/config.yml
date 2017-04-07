@@ -3,9 +3,12 @@ in:
   path_prefix: /test.csv
   parser:
     charset: UTF-8
+#    escape: '"'
     type: csv
     columns:
     - {name: id, type: long}
+    - {name: name, type: string}
+    - {name: attribute, type: string}
     - {name: comment, type: string}
 out:
   type: stdout

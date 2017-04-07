@@ -1,3 +1,9 @@
+# Usage:
+# build: `docker build --no-cache -t someone/embulk .`
+# run: `docker run -d --rm --name some-embulk -t someone/embulk`
+# stop: `docker stop some-embulk`
+# remove: `docker rmi someone/embulk`
+
 FROM openjdk:8
 
 RUN curl --create-dirs -o /usr/local/bin/embulk -L "https://dl.embulk.org/embulk-latest.jar" && \
