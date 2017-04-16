@@ -7,7 +7,7 @@ ENV OPENGROK_DIR /var/opengrok
 RUN apt-get update && \
     apt-get install -y --no-install-recommends locales \
     exuberant-ctags \
-    subverson && \
+    subversion git && \
     apt-get clean && \
     rm -rf /var/cache/apt/archives/* /var/lib/apt/lists/*
 
