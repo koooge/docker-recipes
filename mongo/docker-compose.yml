@@ -1,7 +1,17 @@
-mongo:
-  build: ./build
-  container_name: 'some-mongo'
-  volumes:
-    - ./data:/data/db
-  ports:
-    - "27017:27017"
+# Usage
+# up: `docker-compose up -d`
+# down: `docker-compose down -v`
+
+version: "3"
+
+services:
+  mongo:
+    build: mongo
+    container_name: mongo
+    ports:
+      - "27017:27017"
+    volumes:
+      - ./data:/data/db
+
+volumes:
+  data:
