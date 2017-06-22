@@ -1,0 +1,13 @@
+# Usage:
+# up: `docker-compose up -d`
+# down: `docker-compose down -v --rmi all`
+
+version: "3"
+
+services:
+  digdag-embulk:
+    build:
+      context: .
+      args:
+        - http_proxy
+        - https_proxy

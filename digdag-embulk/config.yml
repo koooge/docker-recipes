@@ -1,0 +1,15 @@
+in:
+  type: file
+  path_prefix: test.csv
+  parser:
+    charset: UTF-8
+    escape: '"'
+    skip_header_lines: 1
+    type: csv
+    columns:
+    - {name: id, type: long}
+    - {name: name, type: string}
+    - {name: attribute, type: string}
+    - {name: comment, type: string}
+out:
+  type: stdout
