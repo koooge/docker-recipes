@@ -14,9 +14,12 @@ RUN curl --create-dirs -o /usr/local/bin/embulk -L "https://dl.embulk.org/embulk
 RUN curl -o /usr/local/bin/digdag --create-dirs -L "https://dl.digdag.io/digdag-latest" && \
     chmod +x /usr/local/bin/digdag
 
-COPY config.yml .
-COPY test.csv .
-COPY mydag.dig .
+RUN mkdir /work
+COPY config.yml /work/
+COPY test.csv /work/
+COPY mydag.dig /work/
+
+WORKDIR /work
 
 # locale setting
 # RUN apt-get update && apt-get install -y --no-install-recommends locales && \
