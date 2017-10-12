@@ -1,4 +1,7 @@
-FROM openjdk:8
+FROM openjdk:8-alpine
+
+# install curl
+RUN apk --update add --no-cache curl
 
 # install embulk
 RUN curl --create-dirs -o /usr/local/bin/embulk -L "https://dl.embulk.org/embulk-latest.jar" && \
