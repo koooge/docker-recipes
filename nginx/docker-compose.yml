@@ -14,3 +14,11 @@ services:
       - NGINX_HOST=192.168.33.10
       - NGINX_PORT=80
     command: /bin/sh -c "envsubst < /etc/nginx/conf.d/mysite.template > /etc/nginx/conf.d/default.conf && nginx -g 'daemon off;'"
+  
+  web-main:
+    build:
+      context: ./web-main
+    container_name: some-web-main
+    ports:
+      - "3000:3000"
+    restart: always
