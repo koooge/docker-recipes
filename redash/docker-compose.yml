@@ -1,0 +1,64 @@
+version: '3'
+
+services:
+  server:
+    image: redash/redash:${REDASH_VERSION:-latest}
+    command: server
+    depends_on:
+      - postgres
+      - redis
+    ports:
+      - "5000:5000"
+    environment:
+      PYTHONUNBUFFERED: 0
+      REDASH_LOG_LEVEL: "INFO"
+      REDASH_REDIS_URL: "redis://redis:6379/0"
+      REDASH_DATABASE_URL: "postgresql://postgres@postgres/postgres"
+      REDASH_COOKIE_SECRET: veryverysecret
+      REDASH_WEB_WORKERS: 4
+#      REDASH_GOOGLE_APPS_DOMAIN:
+      REDASH_GOOGLE_CLIENT_ID:
+      REDASH_GOOGLE_CLIENT_SECRET:
+      REDASH_HOST:
+      REDASH_PASSWORD_LOGIN_ENABLED: "false"
+#      REDASH_ALLOW_SCRIPTS_IN_USER_INPUT: "true"
+#      REDASH_DATE_FORMAT: YY/MM/DD
+    restart: always
+
+  worker:
+    image: redash/redash:${REDASH_VERSION:-latest}
+    command: scheduler
+    environment:
+      PYTHONUNBUFFERED: 0
+      REDASH_LOG_LEVEL: "INFO"
+      REDASH_REDIS_URL: "redis://redis:6379/0"
+      REDASH_DATABASE_URL: "postgresql://postgres@postgres/postgres"
+      QUEUES: "queries,scheduled_queries,celery"
+      WORKERS_COUNT: 2
+    restart: always
+
+  redis:
+    image: redis:3.0-alpine
+    restart: always
+
+  postgres:
+    image: postgres:9.5.6-alpine
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+    restart: always
+
+  nginx:
+    image: redash/nginx:latest
+    ports:
+      - "80:80"
+      - "443:443"
+    depends_on:
+      - server
+    links:
+      - server:redash
+    volumes:
+      - ./nginx/redash.conf:/etc/nginx/conf.d/default.conf
+    restart: always
+
+volumes:
+  postgres-data: {}
